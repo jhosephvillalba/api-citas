@@ -22,9 +22,10 @@ def create_app(test_config=None):
         pass
 
     #configuration flask restful 
-    import flaskr.models
-
     db.init_app(app)
+    from flaskr.models import Usuario
+    from flaskr.models import Cita
+    
     migration.init_app(app, db)
 
     cors.init_app(app, resources={
