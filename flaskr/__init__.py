@@ -25,7 +25,7 @@ def create_app(test_config=None):
     db.init_app(app)
     from flaskr.models import Usuario
     from flaskr.models import Cita
-    
+
     migration.init_app(app, db)
 
     cors.init_app(app, resources={
@@ -36,12 +36,13 @@ def create_app(test_config=None):
             }})
     
     from flaskr.routers import namespaces
+    from flaskr.routers import hello_ns
 
     ma.init_app(app)
     mail.init_app(app)
     
     for ns in namespaces:
-         api.add_namespace(ns, path=f"/{ns.name}")
+         api.add_namespace(ns, path=f"/api/{ns.name}")
 
     jwt.init_app(app)
     api.init_app(app)
